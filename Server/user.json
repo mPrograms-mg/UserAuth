@@ -1,3 +1,44 @@
 {
-    "user":[]
+  "user": [
+    {
+      "firstName": "Mahesh",
+      "lastName": "Kshirsagar",
+      "email": "mmk@gmail.com",
+      "mobile": 9876543210,
+      "username": "mmk",
+      "password": "mmk123",
+      "userType": "Admin",
+      "id": 1
+    },
+    {
+      "firstName": "Sanjay ",
+      "lastName": "Kumar",
+      "email": "sanjay@gmail.com",
+      "mobile": 9632587410,
+      "username": "skg",
+      "password": "skg123",
+      "userType": "User",
+      "id": 2
+    },
+    {
+      "firstName": "Prashan",
+      "lastName": "Mishra",
+      "email": "pm@gmail.com",
+      "mobile": 9876543210,
+      "username": "pjm",
+      "password": "pmj123",
+      "userType": "User",
+      "id": 3
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "mobile": "",
+      "username": "",
+      "password": "",
+      "userType": "",
+      "id": 4
+    }
+  ]
 }

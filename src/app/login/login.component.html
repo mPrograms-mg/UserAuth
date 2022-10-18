@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="container mt-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+      <div class="card">
+        <h4 class="card-header">Login</h4>
+        <div class="card-body">
+          <form [formGroup]="Login" (ngSubmit)="LoginType()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                formControlName="username"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                formControlName="password"
+                class="form-control"
+              />
+            </div>
+            <!-- <div class="form-group">
+              <label for="userType">Type</label>
+              <select
+                class="form-select"
+                id="userType"
+                formControlName="userType"
+              >
+                <option>Select Type</option>
+                <option *ngFor="let item of userType" [value]="item.value">
+                  {{ item.value }}
+                </option>
+              </select>
+            </div> -->
+            <div class="form-group">
+              <button class="btn btn-primary mt-2">
+                <span></span>
+                Login
+              </button>
+              <a routerLink="/register" class="btn btn-link mt-2"
+                >Click here to Register</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
