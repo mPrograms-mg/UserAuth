@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<div class="container mt-4">
+  <div class="p-4 shadow-4 rounded-3" style="background-color: hsl(0, 0%, 94%)">
+    <h2 class="text-center">Welcome {{ userName }}</h2>
+    <p>
+      This is simple Login Register Project with Node backend Api with
+      validation.
+    </p>
+
+    <hr class="my-4" />
+
+    <p>Set Authentication with Auth Guard CanActive and CanDeactive</p>
+    <!-- <button type="button" class="btn btn-primary" routerLink="/register">
+      Register</button
+    >&nbsp; -->
+    <button type="button" class="btn btn-danger" (click)="logout()">
+      Logout
+    </button>
+  </div>
+</div>

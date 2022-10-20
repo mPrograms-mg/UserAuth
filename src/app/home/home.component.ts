@@ -15,9 +15,9 @@ export class HomeComponent implements OnInit {
     this.name = localStorage.getItem('token');
   }
 
-  logout() {
-    alert('Logout');
-    this.service.logout();
-    this.route.navigate(['/login']);
-  }
+  // logout() {
+  //   alert('Logout');
+  //   this.service.logout();
+  //   this.route.navigate(['/login']);
+  // }
 }

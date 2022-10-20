@@ -1,6 +1,7 @@
 <div class="container mt-4">
   <div class="row d-flex justify-content-center">
     <div class="col-md-4">
+      <h2 class="text-danger">{{ responseMessage }}</h2>
       <div class="card">
         <h4 class="card-header">Login</h4>
         <div class="card-body">
@@ -12,6 +13,15 @@
                 formControlName="username"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Login.controls['username'].touched || submitted) &&
+                  Login.controls['username'].errors?.['required']
+                "
+              >
+                User is required
+              </span>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -20,6 +30,15 @@
                 formControlName="password"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Login.controls['password'].touched || submitted) &&
+                  Login.controls['password'].errors?.['required']
+                "
+              >
+                Password is required
+              </span>
             </div>
             <!-- <div class="form-group">
               <label for="userType">Type</label>

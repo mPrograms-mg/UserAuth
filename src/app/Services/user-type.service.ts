@@ -4,34 +4,33 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserTypeService {
-  private url = 'http://192.168.100.84:8000/user';
-  constructor(private http: HttpClient) {}
+  url = environment.apiUrl;
+  private userSubject: BehaviorSubject<any>;
+  public user: Observable<any>;
 
-  registerUser(registerData: any): Observable<any> {
-    return this.http
-      .post<any>(this.url, registerData, {
-        headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      })
-      .pipe(catchError(this.handleError));
+  constructor(private http: HttpClient) {
+    this.userSubject = new BehaviorSubject<any>(
+      JSON.parse(localStorage.getItem('isLoggedIn'))
+    );
+    this.user = this.userSubject.asObservable();
   }
 
-  getUser(): Observable<any> {
-    return this.http.get<any>(this.url).pipe(catchError(this.handleError));
+  signUp(formData: any): Observable<any> {
+    return this.http.post(this.url + '/registration', formData);
   }
 
-  logout(): void {
-    localStorage.setItem('isLoggedIn', 'false');
-    localStorage.removeItem('token');
+  login(LoginData: any): Observable<any> {
+    return this.http.post(this.url + '/login', LoginData, {
+      headers: new HttpHeaders().set('Content-Type', 'application/json'),
+    });
   }
-
-  getToke() {}
-
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -50,3 +49,20 @@ export class UserTypeService {
     );
   }
 }
+
+// private url = 'http://192.168.100.84:8000/user';
+// registerUser(registerData: any): Observable<any> {
+//   return this.http
+//     .post<any>(this.url, registerData, {
+//       headers: new HttpHeaders().set('Content-Type', 'application/json'),
+//     })
+//     .pipe(catchError(this.handleError));
+// }
+// getUser(): Observable<any> {
+//   return this.http.get<any>(this.url).pipe(catchError(this.handleError));
+// }
+// logout(): void {
+//   localStorage.setItem('isLoggedIn', 'false');
+//   localStorage.removeItem('token');
+// }
+// getToke() {}

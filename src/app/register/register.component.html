@@ -12,6 +12,33 @@
                 formControlName="firstName"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['firstName'].touched || submitted) &&
+                  Registration.controls['firstName'].errors?.['required']
+                "
+              >
+                Name is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['firstName'].touched || submitted) &&
+                  Registration.controls['firstName'].errors?.['pattern']
+                "
+              >
+                First Name Required Only Character
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['firstName'].touched || submitted) &&
+                  Registration.controls['firstName'].errors?.['minlength']
+                "
+              >
+                First Name Required Minimum 3 Character Long
+              </span>
             </div>
 
             <div class="form-group">
@@ -20,7 +47,33 @@
                 type="text"
                 formControlName="lastName"
                 class="form-control"
-              />
+              /><span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['lastName'].touched || submitted) &&
+                  Registration.controls['lastName'].errors?.['required']
+                "
+              >
+                Last Name is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['lastName'].touched || submitted) &&
+                  Registration.controls['lastName'].errors?.['pattern']
+                "
+              >
+                Last Name Required Only Character
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['lastName'].touched || submitted) &&
+                  Registration.controls['lastName'].errors?.['minlength']
+                "
+              >
+                Last Name Required Minimum 3 Character Long
+              </span>
             </div>
             <div class="form-group">
               <label for="email">Email</label>
@@ -29,6 +82,33 @@
                 formControlName="email"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['email'].touched || submitted) &&
+                  Registration.controls['email'].errors?.['required']
+                "
+              >
+                Email is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['email'].touched || submitted) &&
+                  Registration.controls['email'].errors?.['email']
+                "
+              >
+                Enter a valid email address
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['email'].touched || submitted) &&
+                  Registration.controls['email'].errors?.['pattern']
+                "
+              >
+                Please Follow the Email pattern 'abc@gmail.com'
+              </span>
             </div>
             <div class="form-group">
               <label for="mobile">Mobile</label>
@@ -37,6 +117,24 @@
                 formControlName="mobile"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['mobile'].touched || submitted) &&
+                  Registration.controls['mobile'].errors?.['required']
+                "
+              >
+                Mobile Number is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['mobile'].touched || submitted) &&
+                  Registration.controls['mobile'].errors?.['pattern']
+                "
+              >
+                Mobile Number must be 10 digit long
+              </span>
             </div>
 
             <div class="form-group">
@@ -46,6 +144,24 @@
                 formControlName="username"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['username'].touched || submitted) &&
+                  Registration.controls['username'].errors?.['required']
+                "
+              >
+                User is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['username'].touched || submitted) &&
+                  Registration.controls['username'].errors?.['minlength']
+                "
+              >
+                User is required at least 4 Character
+              </span>
             </div>
 
             <div class="form-group">
@@ -55,19 +171,46 @@
                 formControlName="password"
                 class="form-control"
               />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['password'].touched || submitted) &&
+                  Registration.controls['password'].errors?.['required']
+                "
+              >
+                Password is required
+              </span>
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['password'].touched || submitted) &&
+                  Registration.controls['password'].errors?.['pattern']
+                "
+              >
+                Password should have minimum 8 characters, at least 1 uppercase
+                letter, 1 lowercase letter and 1 number
+              </span>
             </div>
             <div class="form-group">
-              <label for="userType">Type</label>
-              <select
-                class="form-select"
-                id="userType"
-                formControlName="userType"
+              <label for="userType">Profile</label>
+              <input
+                type="file"
+                name="file"
+                id="file"
+                class="form-control"
+                formControlName="file"
+                accept=".png, .jpg, .jpeg"
+                (change)="onFileChange($event)"
+              />
+              <span
+                class="text-danger"
+                *ngIf="
+                  (Registration.controls['file'].touched || submitted) &&
+                  Registration.controls['file'].errors?.['required']
+                "
               >
-                <option>Select Type</option>
-                <option *ngFor="let item of userType" [value]="item.value">
-                  {{ item.value }}
-                </option>
-              </select>
+                Image is required
+              </span>
             </div>
             <div class="form-group">
               <button class="btn btn-primary mt-2">
